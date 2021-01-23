@@ -5,7 +5,8 @@ import 'package:stacked/stacked.dart';
 import 'package:tomatoz_flutter/ui/views/splash/splash_viewmodel.dart';
 
 class SplashView extends StatelessWidget {
-  final String logoAsset = 'assets/logo_cleaned.svg';
+  final String logoAsset = 'assets/icons/logo_cleaned.svg';
+  final Color _bgColor = Color.fromRGBO(10, 14, 26, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,8 @@ class SplashView extends StatelessWidget {
         body: SizedBox.expand(
           child: Container(
             padding: EdgeInsets.all(25.0),
-            color: Color.fromRGBO(16, 20, 38, 1),
+            color: _bgColor,
+            // color: Color.fromRGBO(16, 20, 38, 1),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -29,22 +31,33 @@ class SplashView extends StatelessWidget {
                     child: logo,
                   ),
                 ),
-                Text(
-                  'a pomodoro app',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontFamily: 'Raleway',
+                Expanded(
+                  child: Text(
+                    'Tomatoz',
+                    style: TextStyle(
+                      fontSize: 45,
+                      color: Colors.white,
+                      fontFamily: 'FilsonPro',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: Text(
+                    'a pomodoro app',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontFamily: 'FilsonPro',
+                    ),
                   ),
                 ),
               ],
             ),
           ),
         ),
-        /*floatingActionButton: FloatingActionButton(
-          onPressed: () => model.navigateToHome(),
-        ),*/
       ),
+      onModelReady: (model) => {model.navigateToHome()},
       viewModelBuilder: () => SplashViewModel(),
     );
   }

@@ -29,6 +29,7 @@ GetIt $initGetIt(
 class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {
   @override
   DialogService get dialogService => DialogService();
+
   @override
   NavigationService get navigationService => NavigationService();
 }
