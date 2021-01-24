@@ -14,9 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       builder: ExtendedNavigator.builder<TomatoRouter>(
-          router: TomatoRouter(),
-          initialRoute: Routes.splashView,
-          navigatorKey: StackedService.navigatorKey),
+        router: TomatoRouter(),
+        initialRoute: Routes.splashView,
+        navigatorKey: StackedService.navigatorKey,
+      ),
     );
   }
 }
