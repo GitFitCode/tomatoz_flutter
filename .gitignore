@@ -65,6 +65,7 @@ local.properties
 
 #iOS related
 xcuserdata/
+ios/build/
 
 # Obj-C/Swift specific
 *.hmap
