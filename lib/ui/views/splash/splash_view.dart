@@ -37,7 +37,6 @@ class SplashView extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 45,
                       color: Colors.white,
-                      fontFamily: 'FilsonPro',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -48,7 +47,6 @@ class SplashView extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 25,
                       color: Colors.white,
-                      fontFamily: 'FilsonPro',
                     ),
                   ),
                 ),

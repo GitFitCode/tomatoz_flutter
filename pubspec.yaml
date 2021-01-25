@@ -38,6 +38,7 @@ dependencies:
   injectable:
 
   flutter_svg:
+  font_awesome_flutter:
 
 dev_dependencies:
   flutter_test:

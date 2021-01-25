@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'FilsonPro',
+      ),
       builder: ExtendedNavigator.builder<TomatoRouter>(
         router: TomatoRouter(),
         initialRoute: Routes.splashView,
