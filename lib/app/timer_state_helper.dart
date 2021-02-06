@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tomatoz_flutter/app/constants.dart';
 
-enum TimerState { TIMER_READY, TIMER_RUNNING, TIMER_PAUSED }
+enum TimerState { TIMER_READY, TIMER_PAUSED, TIMER_RUNNING, TIMER_FINISHED }
 
 abstract class TimerStateHelper {
-  static String getButtonText(TimerState timerState) {
+  static String getTriggerButtonText(TimerState timerState) {
     assert(timerState != null);
 
     switch (timerState) {
@@ -16,6 +16,9 @@ abstract class TimerStateHelper {
         break;
       case TimerState.TIMER_PAUSED:
         return 'RESUME';
+        break;
+      case TimerState.TIMER_FINISHED:
+        return 'FINISHED';
         break;
     }
   }
@@ -32,6 +35,9 @@ abstract class TimerStateHelper {
         break;
       case TimerState.TIMER_PAUSED:
         return BG_COLORS[TimerState.TIMER_PAUSED];
+        break;
+      case TimerState.TIMER_FINISHED:
+        return BG_COLORS[TimerState.TIMER_READY];
         break;
     }
   }

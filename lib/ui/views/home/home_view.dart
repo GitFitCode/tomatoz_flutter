@@ -35,9 +35,6 @@ class HomeView extends StatelessWidget {
                   Container(
                     decoration: BoxDecoration(
                       color: HOME_CONTENT_BG_COLOR,
-                      border: Border.all(
-                        color: Colors.transparent,
-                      ),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(30),
                         topRight: Radius.circular(30),
@@ -46,14 +43,17 @@ class HomeView extends StatelessWidget {
                     padding: EdgeInsets.all(30.0),
                     child: Center(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
-                            '25:00',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 40.0,
-                              fontWeight: FontWeight.bold,
+                          Center(
+                            child: Text(
+                              '25:00',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 40.0,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           FlatButton(
@@ -77,8 +77,20 @@ class HomeView extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            child: FlatButton(
-                              onPressed: null,
+                            child: RaisedButton(
+                              padding: EdgeInsets.all(25.0),
+                              elevation: 0.0,
+                              onPressed: () {
+                                // TODO
+                              },
+                              color: Colors.transparent,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50.0),
+                                side: BorderSide(
+                                  color: model.currentBackgroundColor,
+                                  width: 6.0,
+                                ),
+                              ),
                               child: Text(
                                 'START',
                                 style: TextStyle(
@@ -92,25 +104,53 @@ class HomeView extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text(
-                                '10',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
+                              // TODO replace all these texts by selectable buttons
+                              OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    color: Colors.grey,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: Text(
+                                  '10',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 20.0,
+                                  ),
                                 ),
                               ),
-                              Text(
-                                '25',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
+                              OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    color: Colors.grey,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: Text(
+                                  '25',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 20.0,
+                                  ),
                                 ),
                               ),
-                              Text(
-                                '5',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
+                              OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  side: BorderSide(
+                                    color: Colors.grey,
+                                    width: 2.0,
+                                  ),
+                                ),
+                                onPressed: () {},
+                                child: Text(
+                                  '5',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 20.0,
+                                  ),
                                 ),
                               ),
                             ],
