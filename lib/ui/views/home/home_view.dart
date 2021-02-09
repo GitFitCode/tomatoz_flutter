@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tomatoz_flutter/app/constants.dart';
-import 'package:tomatoz_flutter/ui/views/home/home_viewmodel.dart';
+import 'package:tomatoz_flutter/ui/views/home/timer_control_buttons.dart';
+import 'package:tomatoz_flutter/ui/views/timer/timer_viewmodel.dart';
 
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<HomeViewModel>.reactive(
+    return ViewModelBuilder<TimerViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
               appBar: AppBar(
                 shadowColor: Colors.transparent,
-                backgroundColor: model.currentBackgroundColor,
+                backgroundColor: BG_COLORS[model.currentTimerState],
                 leading: IconButton(
                   onPressed: null,
                   icon: FaIcon(
@@ -31,7 +32,7 @@ class HomeView extends StatelessWidget {
               ),
               body: Stack(
                 children: [
-                  Container(color: model.currentBackgroundColor),
+                  Container(color: BG_COLORS[model.currentTimerState]),
                   Container(
                     decoration: BoxDecoration(
                       color: HOME_CONTENT_BG_COLOR,
@@ -48,7 +49,7 @@ class HomeView extends StatelessWidget {
                         children: [
                           Center(
                             child: Text(
-                              '25:00',
+                              model.title,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 40.0,
@@ -57,7 +58,7 @@ class HomeView extends StatelessWidget {
                             ),
                           ),
                           FlatButton(
-                            onPressed: null,
+                            onPressed: () => model.resetTimer(),
                             child: Text(
                               'Reset',
                               style: TextStyle(
@@ -77,29 +78,7 @@ class HomeView extends StatelessWidget {
                             ),
                           ),
                           Flexible(
-                            child: RaisedButton(
-                              padding: EdgeInsets.all(25.0),
-                              elevation: 0.0,
-                              onPressed: () {
-                                // TODO
-                              },
-                              color: Colors.transparent,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0),
-                                side: BorderSide(
-                                  color: model.currentBackgroundColor,
-                                  width: 6.0,
-                                ),
-                              ),
-                              child: Text(
-                                'START',
-                                style: TextStyle(
-                                  color: model.currentBackgroundColor,
-                                  fontSize: 33.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                            child: TimerControlButton(model),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -162,6 +141,6 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
-        viewModelBuilder: () => HomeViewModel());
+        viewModelBuilder: () => TimerViewModel());
   }
 }
