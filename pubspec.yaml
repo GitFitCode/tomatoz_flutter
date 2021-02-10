@@ -39,6 +39,7 @@ dependencies:
 
   flutter_svg:
   font_awesome_flutter:
+  logger:
 
 dev_dependencies:
   flutter_test:
