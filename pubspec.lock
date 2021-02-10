@@ -437,7 +437,7 @@ packages:
       name: pubspec_parse
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.7"
+    version: "0.1.8"
   quiver:
     dependency: transitive
     description:
@@ -498,7 +498,7 @@ packages:
       name: stacked_services
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.6"
+    version: "0.6.7"
   stream_channel:
     dependency: transitive
     description:

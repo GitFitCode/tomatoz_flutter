@@ -12,12 +12,16 @@ class TimerViewModel extends BaseViewModel {
   factory TimerViewModel() {
     _remainingTime = _defaultTomatoDuration;
     _timerState = TimerState.TIMER_READY;
+    _timerRotation = 1;
     return _instance;
   }
 
   String get title => _remainingTime.format();
 
   TimerState get currentTimerState => _timerState;
+
+  static int _timerRotation;
+  int get timerRotation => _timerRotation;
 
   static Timer _timer;
   static Duration _remainingTime;
@@ -49,6 +53,7 @@ class TimerViewModel extends BaseViewModel {
         _onTimerFinished();
       } else {
         _remainingTime -= INTERVAL;
+        _timerRotation += 6;
         notifyListeners();
       }
     });
@@ -75,6 +80,7 @@ class TimerViewModel extends BaseViewModel {
       _timerState = TimerState.TIMER_READY;
       _timer?.cancel();
       _remainingTime = _defaultTomatoDuration;
+      _timerRotation = 1;
       notifyListeners();
     } else {
       print('The timer is already reset');

@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:tomatoz_flutter/app/constants.dart';
+import 'package:tomatoz_flutter/ui/views/home/duration_chooser_buttons.dart';
 import 'package:tomatoz_flutter/ui/views/home/timer_control_buttons.dart';
 import 'package:tomatoz_flutter/ui/views/timer/timer_viewmodel.dart';
 
 class HomeView extends StatelessWidget {
+  final String defaultTimerSVG = 'assets/icons/default_timer_cleaned.svg';
+
   @override
   Widget build(BuildContext context) {
+    final Widget timerSVG = SvgPicture.asset(
+      defaultTimerSVG,
+      semanticsLabel: 'Tomatoz Logo',
+    );
+
     return ViewModelBuilder<TimerViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
               appBar: AppBar(
@@ -41,99 +50,49 @@ class HomeView extends StatelessWidget {
                         topRight: Radius.circular(30),
                       ),
                     ),
-                    padding: EdgeInsets.all(30.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Center(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Center(
-                            child: Text(
-                              model.title,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 40.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          FlatButton(
-                            onPressed: () => model.resetTimer(),
-                            child: Text(
-                              'Reset',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              child: Icon(
-                                FontAwesomeIcons.stopwatch,
-                                color: Colors.white,
-                                size: 200.0,
-                              ),
-                            ),
-                          ),
-                          Flexible(
-                            child: TimerControlButton(model),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          Column(
                             children: [
-                              // TODO replace all these texts by selectable buttons
-                              OutlinedButton(
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                    color: Colors.grey,
-                                    width: 2.0,
-                                  ),
-                                ),
-                                onPressed: () {},
+                              Center(
                                 child: Text(
-                                  '10',
+                                  model.title,
                                   style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 20.0,
+                                    color: Colors.white,
+                                    fontSize: 40.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
-                              OutlinedButton(
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                    color: Colors.grey,
-                                    width: 2.0,
-                                  ),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  '25',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 20.0,
-                                  ),
-                                ),
-                              ),
-                              OutlinedButton(
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                    color: Colors.grey,
-                                    width: 2.0,
-                                  ),
-                                ),
-                                onPressed: () {},
-                                child: Text(
-                                  '5',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontSize: 20.0,
+                              Center(
+                                child: FlatButton(
+                                  onPressed: () => model.resetTimer(),
+                                  child: Text(
+                                    'Reset',
+                                    style: TextStyle(
+                                      letterSpacing: 1.0,
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w300,
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
+                          RotationTransition(
+                            turns: AlwaysStoppedAnimation(
+                                model.timerRotation / 360),
+                            child: timerSVG,
+                          ),
+                          Flexible(
+                            child: TimerControlButton(model),
+                          ),
+                          DurationChooserButtons(model),
                         ],
                       ),
                     ),
