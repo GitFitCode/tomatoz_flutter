@@ -5,13 +5,13 @@ import 'package:stacked/stacked.dart';
 import 'package:tomatoz_flutter/ui/views/splash/splash_viewmodel.dart';
 
 class SplashView extends StatelessWidget {
-  final String logoAsset = 'assets/icons/logo_cleaned.svg';
+  final String logoSVG = 'assets/icons/logo_cleaned.svg';
   final Color _bgColor = Color.fromRGBO(10, 14, 26, 1);
 
   @override
   Widget build(BuildContext context) {
     final Widget logo = SvgPicture.asset(
-      logoAsset,
+      logoSVG,
       semanticsLabel: 'Tomatoz Logo',
     );
 
@@ -37,7 +37,6 @@ class SplashView extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 45,
                       color: Colors.white,
-                      fontFamily: 'FilsonPro',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -48,7 +47,6 @@ class SplashView extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 25,
                       color: Colors.white,
-                      fontFamily: 'FilsonPro',
                     ),
                   ),
                 ),
